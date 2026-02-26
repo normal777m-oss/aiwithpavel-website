@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./client  # 👈 КЛЮЧОВОТО - влизаме в client папката
+        working-directory: ./client
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,19 +28,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
-          cache-dependency-path: './client/package-lock.json'  # 👈 Указваме къде е lock файлът
+          # ⬇️ ПРЕМАХВАМЕ този ред - той причинява грешката
+          # cache: 'npm'
+          # cache-dependency-path: './client/package-lock.json'
       
       - name: Install dependencies
-        run: npm install  # вече сме в client, затова е само npm install
+        run: npm install
       
       - name: Build project
-        run: npm run build  # вече сме в client
+        run: npm run build
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './client/dist'  # Качваме от client/dist
+          path: './client/dist'
 
   deploy:
     environment:
