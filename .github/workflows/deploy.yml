@@ -26,10 +26,9 @@ jobs:
         with:
           node-version: 20.19
       
-      - name: Clean install
+      - name: Install dependencies
         run: |
           cd client
-          rm -rf node_modules package-lock.json
           npm install --legacy-peer-deps
       
       - name: Build project
@@ -37,20 +36,12 @@ jobs:
           cd client
           npm run build
       
-      - name: List files to verify
+      - name: Copy index.html to dist
         run: |
-          ls -la
-          ls -la client || true
-          ls -la dist || true
-          ls -la client/dist || true
+          cp index.html client/dist/ || true
+          ls -la client/dist/
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist  # 👈 ПРОМЕНЕНО: от client/dist на ./dist
-      
-      - name: Upload client dist as fallback
-        if: failure()
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./client/dist
