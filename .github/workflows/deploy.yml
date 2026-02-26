@@ -24,12 +24,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.19  # 👈 ПРОМЕНЕНО НА 20.19 (изискваната минимална)
+          node-version: 20.19
       
       - name: Clean install
         run: |
           cd client
-          rm -rf node_modules package-lock.json  # 👈 ИЗЧИСТВАМЕ СТАРОТО
+          rm -rf node_modules package-lock.json
           npm install --legacy-peer-deps
       
       - name: Build project
@@ -37,7 +37,20 @@ jobs:
           cd client
           npm run build
       
+      - name: List files to verify
+        run: |
+          ls -la
+          ls -la client || true
+          ls -la dist || true
+          ls -la client/dist || true
+      
       - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist  # 👈 ПРОМЕНЕНО: от client/dist на ./dist
+      
+      - name: Upload client dist as fallback
+        if: failure()
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./client/dist
