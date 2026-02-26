@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Sparkles, Palette, Users, Zap, Mail, MessageCircle } from "lucide-react";
+import { Sparkles, Palette, Users, Zap, Mail, MessageCircle, Phone } from "lucide-react";
 import Gallery from "@/components/Gallery";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -260,26 +261,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
+      {/* Contact Form Section */}
+      <section id="contact" className="py-20">
+        <div className="container">
+          <div className="mb-12">
+            <h2 className="font-display text-4xl font-bold mb-4">Изпратете вашата заявка</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Попълнете формуляра по-долу и ние ще се свържем с вас в рамките на 24 часа с персонализирана оферта.
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+
+      {/* Quick Contact Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
         <div className="container">
           <div className="max-w-2xl mx-auto space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="font-display text-4xl font-bold">Готови ли сте?</h2>
+              <h2 className="font-display text-4xl font-bold">Други начини за контакт</h2>
               <p className="text-lg text-muted-foreground">
-                Превърнете вашата идея в дигитален шедьовър. Свържете се с нас днес!
+                Предпочитате директна комуникация? Свържете се с нас чрез Messenger, Viber или Facebook.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               <Card className="p-6 border-primary/10 hover:border-primary/30 transition">
                 <div className="flex items-start gap-4">
                   <MessageCircle className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium mb-2">Messenger</h3>
                     <p className="text-sm text-muted-foreground mb-4">Пиши в Messenger</p>
-                    <Button variant="outline" size="sm" className="border-primary/20">
+                    <Button 
+                      onClick={() => window.open("https://m.me/normal777m", "_blank")}
+                      variant="outline" 
+                      size="sm" 
+                      className="border-primary/20"
+                    >
                       Отвори Messenger
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6 border-primary/10 hover:border-primary/30 transition">
+                <div className="flex items-start gap-4">
+                  <Phone className="w-6 h-6 text-primary mt-1" />
+                  <div>
+                    <h3 className="font-medium mb-2">Viber</h3>
+                    <p className="text-sm text-muted-foreground mb-4">0896 840 604</p>
+                    <Button 
+                      onClick={() => window.open("viber://chat?number=%2B359896840604", "_blank")}
+                      variant="outline" 
+                      size="sm" 
+                      className="border-primary/20"
+                    >
+                      Звънни по Viber
                     </Button>
                   </div>
                 </div>
@@ -289,24 +326,19 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-primary mt-1" />
                   <div>
-                    <h3 className="font-medium mb-2">Viber</h3>
-                    <p className="text-sm text-muted-foreground mb-4">0896 840 604</p>
-                    <Button variant="outline" size="sm" className="border-primary/20">
-                      Звънни по Viber
-                    </Button>
+                    <h3 className="font-medium mb-2">Facebook</h3>
+                    <p className="text-sm text-muted-foreground mb-4">Павел Димитров</p>
+                    <a 
+                      href="https://www.facebook.com/normal777m/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-primary hover:underline text-sm"
+                    >
+                      Посети профила →
+                    </a>
                   </div>
                 </div>
               </Card>
-            </div>
-
-            <div className="text-center">
-              <div>
-                <h3 className="font-medium mb-2">Facebook</h3>
-                <p className="text-sm text-muted-foreground mb-4">Павел Димитров</p>
-                <a href="https://www.facebook.com/normal777m/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
-                  Посети профила →
-                </a>
-              </div>
             </div>
           </div>
         </div>
