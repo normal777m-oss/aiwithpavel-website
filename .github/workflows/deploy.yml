@@ -24,12 +24,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20.19  # 👈 ПРОМЕНЕНО НА 20.19 (изискваната минимална)
       
-      - name: Install dependencies
+      - name: Clean install
         run: |
           cd client
-          npm install --legacy-peer-deps   # 👈 ТУК Е ПРОМЕНАТА
+          rm -rf node_modules package-lock.json  # 👈 ИЗЧИСТВАМЕ СТАРОТО
+          npm install --legacy-peer-deps
       
       - name: Build project
         run: |
