@@ -9,7 +9,7 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="container flex items-center justify-between h-16">
           <div className="font-display text-2xl font-bold text-primary">AIwithPavel</div>
-          <div className="flex gap-8">
+            <div className="flex gap-8">
             <a href="#services" className="text-sm hover:text-primary transition">Услуги</a>
             <a href="#workflow" className="text-sm hover:text-primary transition">Процес</a>
             <a href="#testimonials" className="text-sm hover:text-primary transition">Отзиви</a>
@@ -287,19 +287,12 @@ export default function Home() {
               </Card>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 text-center">
+            <div className="text-center">
               <div>
                 <h3 className="font-medium mb-2">Facebook</h3>
                 <p className="text-sm text-muted-foreground mb-4">Павел Димитров</p>
                 <a href="https://www.facebook.com/normal777m/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
                   Посети профила →
-                </a>
-              </div>
-              <div>
-                <h3 className="font-medium mb-2">YouTube</h3>
-                <p className="text-sm text-muted-foreground mb-4">@aiwithpavel</p>
-                <a href="https://www.youtube.com/@aiwithpavel" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
-                  Посети канала →
                 </a>
               </div>
             </div>
@@ -318,9 +311,6 @@ export default function Home() {
             <div className="flex gap-6">
               <a href="https://www.facebook.com/AIwithPavel" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition">
                 Facebook
-              </a>
-              <a href="https://www.youtube.com/@aiwithpavel" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition">
-                YouTube
               </a>
               <a href="https://normal777m-oss.github.io/AIwithPavel/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition">
                 GitHub
