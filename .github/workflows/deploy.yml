@@ -36,15 +36,41 @@ jobs:
           cd client
           npm run build
       
-      - name: Copy index.html to dist
+      - name: Verify build output
         run: |
-          cp index.html client/dist/ || true
-          ls -la client/dist/
+          echo "=== Listing root directory ==="
+          ls -la
+          echo "=== Listing client directory ==="
+          ls -la client || true
+          echo "=== Looking for dist ==="
+          find . -name "dist" -type d || true
+      
+      - name: Copy files to deployment directory
+        run: |
+          # Създаваме папка за деплой
+          mkdir -p deploy
+          
+          # Ако има dist в основната папка, копираме от там
+          if [ -d "dist" ]; then
+            cp -r dist/* deploy/ || true
+          fi
+          
+          # Ако има dist в client, копираме от там  
+          if [ -d "client/dist" ]; then
+            cp -r client/dist/* deploy/ || true
+          fi
+          
+          # Копираме index.html от основната папка
+          cp index.html deploy/ || true
+          
+          # Показваме какво има в deploy
+          echo "=== Deployment directory contents ==="
+          ls -la deploy/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./client/dist
+          path: ./deploy
 
   deploy:
     environment:
