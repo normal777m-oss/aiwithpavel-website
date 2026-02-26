@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Palette, Users, Zap, Mail, MessageCircle } from "lucide-react";
+import Gallery from "@/components/Gallery";
 
 export default function Home() {
   return (
@@ -205,6 +206,17 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 bg-card/50">
+        <div className="container space-y-12">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-4xl font-bold mb-4">Портфолио</h2>
+            <p className="text-lg text-muted-foreground">Разгледайте примери от нашите завършени проекти</p>
+          </div>
+          <Gallery />
         </div>
       </section>
 
